@@ -106,21 +106,22 @@ class FileExplorerCard {
     }
   
     // Fonction pour initialiser la carte
-  setConfig(config) {
-    this.config = config;
-    const node = document.querySelector(`[type="custom:vp-card"][entity="${this.entity}"]`);
-    if (node) {
-      node.innerHTML = config.html;
-      node.addEventListener('click', this.handleClick.bind(this));
+    setConfig(config) {
+        this.config = config;
+        const node = document.querySelector(`[type="custom:vp-card"][entity="${this.entity}"]`);
+        if (node) {
+          node.innerHTML = config.html;
+          node.addEventListener('click', this.handleClick.bind(this));
+        }
     }
-  }
 
-  // Fonction d'initialisation de la carte (à appeler dans le code Lovelace)
-  static async init(config) {
-    const card = new FileExplorerCard(config);
-    return card;
-  }
+    // Fonction d'initialisation de la carte (à appeler dans le code Lovelace)
+    static async init(config) {
+        const card = new FileExplorerCard(config);
+        return card;
+    }
 }
+
 customElements.define("vp-card", FileExplorerCard);
 
 console.groupCollapsed(`%VP-CARD ${VPCardVersion} IS INSTALLED`,"color: green; font-weight: bold");
