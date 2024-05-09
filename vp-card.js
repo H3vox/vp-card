@@ -79,7 +79,7 @@ class FileExplorerCard {
   
       // Configurer le contenu de la carte
       const cardConfig = {
-        type: 'custom:file-explorer-card',
+        type: 'custom:vp-card',
         entity: this.entity,
         html: html,
       };
@@ -108,7 +108,7 @@ class FileExplorerCard {
     // Fonction pour initialiser la carte
   setConfig(config) {
     this.config = config;
-    const node = document.querySelector(`[type="custom:file-explorer-card"][entity="${this.entity}"]`);
+    const node = document.querySelector(`[type="custom:vp-card"][entity="${this.entity}"]`);
     if (node) {
       node.innerHTML = config.html;
       node.addEventListener('click', this.handleClick.bind(this));
@@ -121,5 +121,16 @@ class FileExplorerCard {
     return card;
   }
 }
+customElements.define("vp-card", FileExplorerCard);
 
-customElements.define('file-explorer-card', FileExplorerCard);
+console.groupCollapsed(`%VP-CARD ${VPCardVersion} IS INSTALLED`,"color: green; font-weight: bold");
+console.log("Readme:","https://github.com/H3vox/vp-card");
+console.groupEnd();
+
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "vp-card",
+  name: "VP Card",
+  preview: false,
+  description: "The Videos Player Card allows for viewing multiple images/videos."  
+});
